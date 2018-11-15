@@ -2,7 +2,6 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-
 #include "bmp.h"
 
 int main(int argc, char *argv[])
@@ -34,7 +33,6 @@ int main(int argc, char *argv[])
         fprintf(stderr, "Could not create %s.\n", outfile);
         return 3;
     }
-
     // read infile's BITMAPFILEHEADER
     BITMAPFILEHEADER bf;
     fread(&bf, sizeof(BITMAPFILEHEADER), 1, inptr);
@@ -72,6 +70,13 @@ int main(int argc, char *argv[])
 
             // read RGB triple from infile
             fread(&triple, sizeof(RGBTRIPLE), 1, inptr);
+            //Change something!
+            if(triple.rgbtRed==0xff && triple.rgbtBlue==0xff&& triple.rgbtGreen==0xff)
+            {
+                triple.rgbtBlue=0xff;
+                triple.rgbtGreen=0x00;
+                triple.rgbtRed=0x00;
+            }
 
             // write RGB triple to outfile
             fwrite(&triple, sizeof(RGBTRIPLE), 1, outptr);

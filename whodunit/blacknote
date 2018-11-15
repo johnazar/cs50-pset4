@@ -1,0 +1,3 @@
+BITMAPFILEHEADER, is 14 bytes long
+BITMAPINFOHEADER, is 40 bytes long
+RGBQUAD, an array that defines "intensity values" for each of the colors in a device’s palette.
